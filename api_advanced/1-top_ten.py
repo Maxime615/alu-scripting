@@ -10,7 +10,7 @@ import requests
 def top_ten(subreddit):
     """Queries Reddit API for the first 10 hot posts of a given subreddit."""
     url = "https://www.reddit.com/r/{}/hot.json?limit=10".format(subreddit)
-    headers = {"User-Agent": "my-script/0.1"}
+    headers = {"User-Agent": "linux:holberton:top_ten:v1.0 (by /u/maxime)"}
     response = requests.get(url, headers=headers, allow_redirects=False)
 
     if response.status_code != 200:

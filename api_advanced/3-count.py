@@ -9,7 +9,10 @@ import requests
 
 
 def count_words(subreddit, word_list, after=None, counts=None):
-    """Recursively queries Reddit API and counts keyword occurrences in hot posts."""
+    """
+    Recursively queries Reddit API and counts
+    keyword occurrences in hot posts.
+    """
     if counts is None:
         counts = {}
         for word in word_list:
@@ -34,7 +37,10 @@ def count_words(subreddit, word_list, after=None, counts=None):
         for child in children:
             title = child.get("data", {}).get("title", "").lower()
             for word in counts.keys():
-                matches = re.findall(r'\b{}\b'.format(re.escape(word)), title)
+                matches = re.findall(
+                    r'\b{}\b'.format(re.escape(word)),
+                    title
+                )
                 counts[word] += len(matches)
 
         if after is not None:
